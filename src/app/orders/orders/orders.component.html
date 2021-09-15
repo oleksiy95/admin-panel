@@ -1,0 +1,59 @@
+<div class="mat-elevation-z8">
+  <div class="table-container">
+    <table mat-table class="full-width-table" matSort aria-label="Elements">
+  
+      <ng-container matColumnDef="createdDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Дата</th>
+          <td mat-cell *matCellDef="let row">{{row.createdDate | date: 'medium'}}</td>
+        </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Ім`я</th>
+      <td mat-cell *matCellDef="let row">{{row.name}}</td>
+    </ng-container>
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Телефон</th>
+      <td mat-cell *matCellDef="let row">{{row.phone}}</td>
+    </ng-container>
+    <ng-container matColumnDef="street">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Вулиця</th>
+      <td mat-cell *matCellDef="let row">{{row.street}}</td>
+    </ng-container>
+    <ng-container matColumnDef="number">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header># Будинку</th>
+      <td mat-cell *matCellDef="let row">{{row.number}}</td>
+    </ng-container>
+    <ng-container matColumnDef="paymentType">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Тип оплати</th>
+      <td mat-cell *matCellDef="let row">{{paymentType[row.paymentType]}}</td>
+    </ng-container>
+    <ng-container matColumnDef="deliveryType">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Тип доставки</th>
+      <td mat-cell *matCellDef="let row">{{deliveryType[row.deliveryType]}}</td>
+    </ng-container>
+    <ng-container matColumnDef="promotion">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Акція</th>
+      <td mat-cell *matCellDef="let row">{{promotionType[row.promotion]}}</td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Статус</th>
+      <td mat-cell *matCellDef="let row">{{status[row.status]}}</td>
+    </ng-container>
+    <ng-container matColumnDef="totalPrice">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Сума</th>
+      <td mat-cell *matCellDef="let row">{{row.totalPrice}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row class="{{status[row.status]}} {{paymentType[row.paymentType]}}" [ngClass]="status[row.status]" (click)="openOrder(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  </div>
+    
+  
+    <mat-paginator #paginator
+        [length]="dataSource?.data?.length"
+        [pageIndex]="0"
+        [pageSize]="30"
+        [pageSizeOptions]="[30, 100]">
+    </mat-paginator>
+  </div>
+  

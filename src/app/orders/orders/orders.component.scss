@@ -1,0 +1,34 @@
+div.mat-elevation-z8 {
+  height: calc(100% - 64px);
+  div.table-container {
+    position: relative;
+    height: calc(100% - 56px);
+    overflow: auto;
+    .full-width-table {
+      width: 100%;
+      tr.mat-row {
+        cursor: pointer;
+  
+        &:hover {
+          background-color: whitesmoke;
+        }
+  
+        &.new.offline, &.new.terminal, &.payedOnline.online {
+          background-color: #97ff9d;
+        }
+        &.new.online {
+          background-color:#ffff7f;
+        }
+        &.confirmed {
+          background-color:#6bcc6b;
+        }
+        &.cancelled {
+          background-color:#ff9393;
+        }
+      }
+    }
+  }
+}
+
+
+  

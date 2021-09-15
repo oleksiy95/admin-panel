@@ -1,0 +1,15 @@
+div.mat-elevation-z8 {
+  height: calc(100% - 64px);
+  div.table-container {
+    position: relative;
+    height: calc(100% - 56px);
+    overflow: auto;
+    .full-width-table {
+      width: 100%;
+      
+    }
+  }
+}
+
+
+  

@@ -1,0 +1,23 @@
+div.mat-elevation-z8 {
+  height: calc(100% - 64px);
+  div.table-container {
+    position: relative;
+    height: calc(100% - 56px);
+    overflow: auto;
+    .full-width-table {
+      width: 100%;
+      
+    }
+  }
+}
+
+
+  
+
+  .add-button-container {
+    position: fixed;
+    right: 20px;
+    top: 3px;
+    z-index: 2;
+  }
+  

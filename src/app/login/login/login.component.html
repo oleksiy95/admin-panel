@@ -1,0 +1,35 @@
+<form *ngIf="form" [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="form-card">
+        <mat-card-header>
+            <mat-card-title>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Логін" formControlName="userName">
+                        <mat-error *ngIf="form.controls['userName'].hasError('required')">
+                            Введіть логін
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input type="password" matInput placeholder="Пароль" formControlName="password">
+                        <mat-error *ngIf="form.controls['password'].hasError('required')">
+                            Введіть пароль
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Увійти</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

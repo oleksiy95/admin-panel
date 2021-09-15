@@ -1,0 +1,42 @@
+<mat-card *ngIf="order" class="dashboard-card">
+    <mat-card-header>
+        <mat-card-title>
+            {{order.name}} {{order.phone}} (Статус: {{orderStatus[order.status]}})
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+                <button (click)="updateStatus(orderStatus.confirmed)" mat-menu-item>Підтвердити</button>
+                <button (click)="updateStatus(orderStatus.cancelled)" mat-menu-item>Скасувати</button>
+                <button color="warn" (click)="delete()" mat-menu-item>Видалити</button>
+            </mat-menu>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="dashboard-card-content">
+        <p>Оплата: {{paymentType[order.paymentType]}}</p>
+        <p>Доставка: {{deliveryType[order.deliveryType]}}</p>
+        <p *ngIf="order.deliveryType === deliveryType.delivery">Адреса: {{order.street}} {{order.number}}</p>
+        <p>Замовлення:</p>
+        <div class="order-container">
+            <mat-card class="order-card mat-elevation-z3" *ngFor="let item of order.items">
+                <mat-card-header>
+                    <mat-card-title>{{item.product?.name}} x{{item.number}}</mat-card-title>
+                    <mat-card-subtitle>
+                        <mat-chip-list>
+                            <mat-chip *ngFor="let component of item.components"
+                                [color]="component.product?.type === productType.component ? 'primary' : 'accent'" selected>
+                                {{component.product?.name}} x{{component.number}}</mat-chip>
+                        </mat-chip-list>
+    
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>Загалом: {{item.totalPrice | currency}}</p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <p *ngIf="order.comment">Коментар: {{order.comment}}</p>
+        <p *ngIf="order.promotion">Акція: {{promotionType[order.promotion]}}</p>
+        <h3>Загалом: {{order.totalPrice | currency}}</h3>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,15 @@
+
+
+form {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .form-card {
+        min-width: 200px;
+    }
+    .full-width {
+        width: 100%;
+    }
+}
+  

@@ -1,0 +1,57 @@
+<form *ngIf="form" [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="form-card">
+        <mat-card-header>
+            <mat-card-title>Додати
+                <button type="button" mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu" xPosition="before">
+                    <button color="warn" mat-menu-item>Видалити</button>
+                </mat-menu>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Назва" formControlName="name">
+                        <mat-error *ngIf="form.controls['name'].hasError('required')">
+                            Назва <strong>обов`язкова</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Опис" formControlName="description">
+                        <mat-error *ngIf="form.controls['description'].hasError('required')">
+                            Опис <strong>обов`язковий</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Дія" formControlName="action">
+                        <mat-error *ngIf="form.controls['action'].hasError('required')">
+                            Дія <strong>обов`язкова</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Зображення" formControlName="image">
+                        <mat-error *ngIf="form.controls['image'].hasError('required')">
+                            Зображення <strong>обов`язкове</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Додати</button>
+        </mat-card-actions>
+    </mat-card>
+</form>
